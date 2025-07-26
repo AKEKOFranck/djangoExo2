@@ -1,0 +1,35 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+{% block head %} 
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock head %}
+
+{% block title %}Accueil{% endblock title %}
+
+{% block content %}
+    <section class="main">
+        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} {% endif %}> {{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+        <div class="main_box">
+            <form method="post">
+               {% csrf_token %} 
+               {{ form.as_p }}   
+
+               <button type="submit">Connecter</button>
+            </form>
+        </div>
+        <h2>OU</h2>
+        <div class="main_box">
+             <a href="{% url 'create' %}">
+                <button class="main_bt">
+                    Inscrivez-vous
+                </button>
+            </a>
+        </div>
+    </section>
+{% endblock content %}

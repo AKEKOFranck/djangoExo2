@@ -1,0 +1,30 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/perso.css' %}">
+{% endblock %}
+{% block title %}Profil{% endblock %}
+
+{% block content %}
+<section class="profil_main">
+    <h2 class="profil_title">Bienvenue {{ request.user.username }}</h2>
+    <h5 class="profil_text">
+        <p>Votre nom : {{ request.user.last_name }}</p>
+        {% if request.user.age %}
+        <p>Votre âge : {{ request.user.age }} ans</p>
+        {% endif %}
+    </h5>
+    <div class="profil_box_bt">
+        <a href="{% url 'modif' %}">
+            <button class="profil_bt">Modifier votre profil</button>
+        </a>
+        <a href="{% url 'home' %}">
+            <button class="profil_bt">Accueil</button>
+        </a>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="profil_bt">Déconnectez-vous</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

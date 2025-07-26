@@ -1,0 +1,19 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+{% block head %} 
+<link rel="stylesheet" href="{% static 'css/modification.css' %}">
+{% endblock head %}
+
+{% block title %}Modification{% endblock title %}
+
+{%block content%}
+<section class="modif-main">
+    <h2>Modifier votre profil</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer</button>
+    </form>
+    <a href="{% url 'profil' %}"> <button class='modif_bt'> Annuler </button> </a>
+</section>
+{%endblock content%}

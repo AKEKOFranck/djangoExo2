@@ -1,0 +1,18 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+{%block head%} <link rel="stylesheet" href="{%static 'css/new.css'%}">{%endblock head%}
+{%block title%}Creation de compte{%endblock title%}
+
+{% block content %}
+    <section class="create_main">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit-btn">Créer</button>
+        </form>
+        <div class="create_box_bt">
+            <a href="{% url 'home' %}" class="create_bt">Accueil</a>
+            <a href="{% url 'logout' %}" class="create_bt">Déconnectez-vous</a>
+        </div>
+    </section>
+{% endblock content %}

@@ -10,13 +10,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ==================== SECURITE ====================
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', get_random_secret_key())
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost',
     'http://127.0.0.1',
+    'https://djangoexo2.onrender.com',
 ]
 
 # ==================== APPLICATIONS ====================
